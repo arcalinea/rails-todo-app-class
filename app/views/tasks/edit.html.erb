@@ -1,0 +1,10 @@
+<h1>Edit task</h1>
+
+<%= form_for @task do |task| %>
+
+	<%= task.label :description %><br>
+	<%= task.text_area :description %>
+
+	<%= task.submit %>
+
+<% end %>
