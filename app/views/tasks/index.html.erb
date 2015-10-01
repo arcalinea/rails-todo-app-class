@@ -1,7 +1,33 @@
-<h1>todos</h1>
+<section id="todoapp">
+	<header id="header">
+		<h1>todos</h1>
+		<input id="new-todo" autofocus="" placeholder="What needs to be done?"></input>
+	</header>
 
-<% @tasks.each do |task| %>
-	<li><%= link_to task.description, edit_task_path(task)%>  <%= link_to 'x', task_path(task), method: :delete %> </li> 
-<% end %>
+	<section id="main" style="display: block;">
+		<ul id="todo-list">
+				<% @tasks.each do |task| %>
+					<li>
+						<div class="view">
+							<input class="toggle" type="checkbox"></input>
+							<label><%= task.description%> <%= link_to 'x', task_path(task), method: :delete %> | <%= link_to 'edit', edit_task_path(task)%>
+							</label> 
+						</div>
+					</li> 
+				<% end %>
+		</ul>
+	</section>
 
-<%= link_to 'New task', new_task_path %>
+	<footer id="footer" style="display: block;">
+		<span id="todo-count">
+			<strong><%= @tasks.count %></strong> items left
+		</span>
+		<ul id="filters">
+			<li><%= link_to 'New task', new_task_path %></li>
+			<li><%= link_to 'All', tasks_path %></li>
+			<li><%= link_to 'Active', tasks_active_path %></li>
+			<li><%= link_to 'Completed', tasks_completed_path %></li>
+		</ul>
+	</footer>
+
+</section>

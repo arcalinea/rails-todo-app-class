@@ -43,6 +43,16 @@ class TasksController < ApplicationController
 		redirect_to tasks_path
 	end
 
+	def active
+		@tasks = Task.where(complete: false)
+		render 'index'
+	end
+
+	def completed
+		@tasks = Task.where(complete: true)
+		render 'index'
+	end
+
 	private
 		def task_params
 			params.require(:task).permit(:description, :complete)
