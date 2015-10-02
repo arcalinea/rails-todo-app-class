@@ -1,0 +1,8 @@
+<li>
+	<div class="view">
+		<input class="toggle" type="checkbox"></input>
+		<label><%= @task.description%>  | <%= link_to 'edit', edit_task_path(@task)%>
+		</label> 
+		<%= button_to 'X', task_path(@task), class: 'destroy', method: :delete %>
+	</div>
+</li> 

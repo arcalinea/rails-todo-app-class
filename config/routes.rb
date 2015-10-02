@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/tasks/completed', to: 'tasks#completed'
   get '/tasks/active', to: 'tasks#active'
+  get '/tasks/:id/complete', to: 'tasks#complete'
   resources :tasks
 
   

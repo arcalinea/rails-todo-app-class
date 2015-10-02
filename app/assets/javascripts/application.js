@@ -14,3 +14,36 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+
+	// newTask();
+
+
+	$('#header form').on('submit', function(e){
+			e.preventDefault();
+			var input = $(this).serializeArray();
+			console.log(input)
+			
+			$.ajax({
+				type: 'post',
+				url: '/tasks',
+				data: input,
+			})
+			.done(function(response){
+				$('#todo-list').append(response);
+				$('form')[0].reset();
+			})
+			// .fail(function(jqXHR, textStatus, error){
+			// 	console.log(jqXHR, textStatus, error)
+			// })
+
+	})
+
+})
+
+// var newTask = function(){
+
+
+
+// }

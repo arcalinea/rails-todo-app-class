@@ -1,7 +1,11 @@
 <section id="todoapp">
 	<header id="header">
 		<h1>todos</h1>
-		<input id="new-todo" autofocus="" placeholder="What needs to be done?"></input>
+		<!-- <input id="new-todo" autofocus="" placeholder="What needs to be done?"></input> -->
+		<%= form_for @task, url: {action: "create"}  do |f| %>
+
+    	<%= f.text_field :description, id: 'new-todo', autofocus: "", placeholder: "What needs to be done?" %>
+		<% end %>
 	</header>
 
 	<section id="main" style="display: block;">
@@ -10,8 +14,9 @@
 					<li>
 						<div class="view">
 							<input class="toggle" type="checkbox"></input>
-							<label><%= task.description%> <%= link_to 'x', task_path(task), method: :delete %> | <%= link_to 'edit', edit_task_path(task)%>
+							<label><%= task.description%>  | <%= link_to 'edit', edit_task_path(task)%>
 							</label> 
+							<%= button_to 'X', task_path(task), class: 'destroy', method: :delete %>
 						</div>
 					</li> 
 				<% end %>
